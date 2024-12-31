@@ -1,65 +1,77 @@
 # Email CLI in Go
 
-## Project Plan
+A powerful command-line email client with advanced features including template support, address book management, email scheduling, and secure configuration storage.
 
-1. Setup project structure
-2. Implement command-line argument parsing
-3. Create email composition functionality
-4. Implement SMTP client for sending emails
-5. Add email template support
-6. Implement address book functionality
-7. Add attachment support
-8. Create user configuration management
-9. Implement logging and error handling
-10. Write unit tests and integration tests
+## Features
 
-## Implementation Details
+- 📧 Send emails via SMTP
+- 📁 Multiple SMTP profile support
+- 📝 Email template system
+- 👥 Address book management
+- 📎 File attachment support
+- 📅 Email scheduling
+- 🔒 Secure configuration storage
+- 🌐 HTML email support
+- 👥 CC/BCC support
+- ↩️ Reply-To header support
 
-### 1. Project Structure
-- main.go: Entry point of the application
-- cmd/: Command handlers
-- internal/: Internal packages
-  - email/: Email-related functionality
-  - config/: Configuration management
-  - addressbook/: Address book functionality
-- templates/: Email templates
-- config/: Configuration files
+## Installation
 
-### 2. Command-line Argument Parsing
-We'll use the `flag` package to parse command-line arguments.
+```bash
+go install github.com/zeroxclem/email-cli@latest
+```
 
-### 3. Email Composition
-Implement a simple text editor or use external editor integration for composing emails.
+## Quick Start
 
-### 4. SMTP Client
-Use the `net/smtp` package to implement the email sending functionality.
+```bash
+# Send a simple email
+email-cli -to recipient@example.com -from sender@example.com -subject "Hello" -body "World"
 
-### 5. Email Templates
-Store email templates as text files and implement a template engine using the `text/template` package.
+# Send with attachment
+email-cli -to recipient@example.com -from sender@example.com -subject "Report" -body "Please find attached" -attach "report.pdf"
+```
 
-### 6. Address Book
-Implement a simple address book using JSON files for storage.
+## Documentation
 
-### 7. Attachment Support
-Use the `mime/multipart` package to add attachment support to emails.
+- [Usage Guide](documentation/usage.md)
+- [Command Reference](documentation/commands.md)
+- [Configuration Examples](documentation/config-examples.md)
+- [Contributing Guidelines](documentation/contributing.md)
 
-### 8. User Configuration
-Store user configuration (SMTP settings, default sender, etc.) in a JSON file.
+## Configuration
 
-### 9. Logging and Error Handling
-Implement logging using the `log` package and create custom error types for better error handling.
+The CLI supports multiple SMTP profiles and secure storage of credentials. See the [configuration examples](documentation/config-examples.md) for detailed setup instructions.
 
-### 10. Testing
-Write unit tests for individual components and integration tests for the entire CLI using the `testing` package.
+## Address Book
 
-## Getting Started
+Manage contacts and groups for easy email sending:
 
-[Instructions on how to build and run the CLI]
+```bash
+# Add a contact
+email-cli -ab add-contact -contact-name "John" -contact-email "john@example.com"
+
+# List contacts
+email-cli -ab list-contacts
+```
+
+## Templates
+
+Use email templates for consistent communication:
+
+```bash
+email-cli -template welcome -name "John" -to "john@example.com"
+```
+
+## Security
+
+- Encrypted storage of sensitive data
+- TLS support for SMTP connections
+- Input validation and sanitization
 
 ## Contributing
 
-[Guidelines for contributing to the project]
+Contributions are welcome! Please read our [Contributing Guidelines](documentation/contributing.md) before submitting pull requests.
 
 ## License
 
-[License information]
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
